@@ -60,14 +60,7 @@
         </pitch>
         <duration>4</duration>
         <type>quarter</type>
-
       </note>
-      <!-- 
-      <note>
-        <rest/>
-        <duration>4</duration>
-        <type>half</type>
-      </note> -->
       <barline location="right">
         <bar-style>none</bar-style>
       </barline>
