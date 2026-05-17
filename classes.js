@@ -46,7 +46,7 @@ class MusicTrack {
         // text label in centre of circle
         this.label;
         // audio tracks associated, same order as arrows.
-        this.audio = [];
+        this.audio = [new Arrow({ owner: this })];
     }
 
     // return index of arrow or -1 if none or Infinity if all
@@ -96,7 +96,6 @@ class MusicTrack {
     }
 }
 
-
 class Arrow {
     constructor(parameters) {
         // Start End points
@@ -104,9 +103,56 @@ class Arrow {
         this.sy;
         this.ex;
         this.ey;
+        // node that owns object
+        this.node = parameters.owner;
+        // need cx,cy and r from Music track node
     }
+
+    drawArrowHead() {
+        // work out x, y, and angle based on start and end vectors
+        push(); //start new drawing state
+        translate(x, y);
+        rotate(angle);
+        triangle(0, 6, 12, 0, 0, -6)
+        pop()
+    }
+
     draw() {
+        // rectMode(CORNERS)
+        // translating using owner cx,cy and r
+        // this.node
+        // push(); //start new drawing state
+        // translate(x, y);
+        // rotate(angle);
+        // triangle(0, 6, 12, 0, 0, -6)
+        // pop()
         //Draw line / rectangle
         // rotate and draw triangle
+        // drawArrowHead();
+    }
+
+    isMouseOverRect(mx, my, rx, ry, rw, rh, angle) {
+
+        // Translate mouse relative to rect center
+        let dx = mx - rx;
+        let dy = my - ry;
+
+        // Rotate mouse point in opposite direction
+        let localX = dx * cos(-angle) - dy * sin(-angle);
+        let localY = dx * sin(-angle) + dy * cos(-angle);
+
+        // Standard bounds check
+        return (
+            localX > -rw / 2 &&
+            localX < rw / 2 &&
+            localY > -rh / 2 &&
+            localY < rh / 2
+        )
+    }
+    isMouseOverArrowHead() {
+        return false;
+    }
+    isMouseHover(mouseX, mouseY) {
+    return (this.isMouseOverRect() || this.isMouseOverArrowHead())
     }
 }

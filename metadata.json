@@ -1,0 +1,268 @@
+{
+    "Prelude/Sephiroth": [
+        {
+            "text": "The Prelude",
+            "arrows_from": 1
+        },
+        {
+            "text": "Continue?",
+            "arrows_from": 1
+        },
+        {
+            "text": "Chasing the Black-Caped Man",
+            "arrows_from": 1
+        },
+        {
+            "text": "Anxious Heart",
+            "arrows_from": 1
+        },
+        {
+            "text": "Those Chosen By the Planet",
+            "arrows_from": 1
+        },
+        {
+            "text": "Weapon Raid",
+            "arrows_from": 1
+        },
+        {
+            "text": "Birth of a God",
+            "arrows_from": 1
+        },
+        {
+            "text": "One-Winged Angel",
+            "arrows_from": 1
+        }
+    ],
+    "Barret": [
+        {
+            "text": "Barret’s Theme",
+            "arrows_from": 1
+        },
+        {
+            "text": "Mark of the Traitor",
+            "arrows_from": 1
+        }
+    ],
+    "Main Theme": [
+        {
+            "text": "Main Theme",
+            "arrows_from": 1
+        },
+        {
+            "text": "Highwind Takes to the Skies",
+            "arrows_from": 1
+        },
+        {
+            "text": "Holding My Thoughts in My Heart",
+            "arrows_from": 1
+        },
+        {
+            "text": "Interrupted by Fireworks",
+            "arrows_from": 1
+        },
+        {
+            "text": "Steal the Tiny Bronco!",
+            "arrows_from": 1
+        },
+        {
+            "text": "That Day Five Years Ago",
+            "arrows_from": 1
+        },
+        {
+            "text": "Who Am I?",
+            "arrows_from": 1
+        }
+    ],
+    "Chocobo": [
+        {
+            "text": "Cinco de Chocobo",
+            "arrows_from": 1
+        },
+        {
+            "text": "Farm Boy",
+            "arrows_from": 0
+        },
+        {
+            "text": "Waltz de Chocobo",
+            "arrows_from": 1
+        },
+        {
+            "text": "Fiddle de Chocobo",
+            "arrows_from": 1
+        },
+        {
+            "text": "Electric de Chocobo",
+            "arrows_from": 1
+        }
+    ],
+    "Yuffie": [
+        {
+            "text": "Descendant of Shinobi",
+            "arrows_from": 1
+        },
+        {
+            "text": "Stolen Materia",
+            "arrows_from": 1
+        }
+    ],
+    "Tifa": [
+        {
+            "text": "Tifa’s Theme",
+            "arrows_from": 1
+        }
+    ],
+    "Aerith": [
+        {
+            "text": "Judgment Day",
+            "arrows_from": 1
+        },
+        {
+            "text": "Aerith’s Theme",
+            "arrows_from": 2
+        },
+        {
+            "text": "Flowers Blooming in the Church",
+            "arrows_from": 1
+        },
+        {
+            "text": "Reunion",
+            "arrows_from": 1
+        }
+    ],
+    "Cid": [
+        {
+            "text": "Cid’s Theme",
+            "arrows_from": 1
+        },
+        {
+            "text": "The Countdown Begins",
+            "arrows_from": 1
+        },
+        {
+            "text": "Sending a Dream Into the Universe",
+            "arrows_from": 1
+        }
+    ],
+    "Red XIII": [
+        {
+            "text": "Cosmo Canyon",
+            "arrows_from": 2
+        },
+        {
+            "text": "Great Warrior",
+            "arrows_from": 1
+        },
+        {
+            "text": "Red XIII’s Theme",
+            "arrows_from": 1
+        }
+    ],
+    "Lifestream": [
+        {
+            "text": "Opening",
+            "arrows_from": 2
+        },
+        {
+            "text": "Lifestream",
+            "arrows_from": 1
+        }
+    ],
+    "Bombing Mission": [
+        {
+            "text": "Bombing Mission",
+            "arrows_from": 1
+        },
+        {
+            "text": "Hurry!",
+            "arrows_from": 1
+        }
+    ],
+    "Fanfare": [
+        {
+            "text": "A Great Success",
+            "arrows_from": 1
+        },
+        {
+            "text": "Fanfare",
+            "arrows_from": 1
+        },
+        {
+            "text": "Tango of Tears",
+            "arrows_from": 1
+        }
+    ],
+    "Oppressed People": [
+        {
+            "text": "Oppressed People",
+            "arrows_from": 1
+        },
+        {
+            "text": "It’s Hard to Stand on Two Feet, Isn’t It?",
+            "arrows_from": 1
+        },
+        {
+            "text": "If You Open Your Heart…",
+            "arrows_from": 1
+        }
+    ],
+    "Midgar/Fighting": [
+        {
+            "text": "Under the Rotting Pizza",
+            "arrows_from": 1
+        },
+        {
+            "text": "Those Who Fight",
+            "arrows_from": 1
+        },
+        {
+            "text": "Trail of Blood",
+            "arrows_from": 0
+        },
+        {
+            "text": "Hurry Faster!",
+            "arrows_from": 1
+        },
+        {
+            "text": "The Mako Cannon Is Fired",
+            "arrows_from": 1
+        },
+        {
+            "text": "Shinra Company",
+            "arrows_from": 2
+        },
+        {
+            "text": "Infiltrating Shinra Tower",
+            "arrows_from": 1
+        },
+        {
+            "text": "Shinra Army Wages a Full-Scale Attack",
+            "arrows_from": 1
+        },
+        {
+            "text": "Mako Reactor",
+            "arrows_from": 1
+        },
+        {
+            "text": "Those Who Fight Further",
+            "arrows_from": 1
+        },
+        {
+            "text": "Turks’ Theme",
+            "arrows_from": 1
+        },
+        {
+            "text": "Lurking in the Darkness",
+            "arrows_from": 1
+        }
+    ],
+    "Global/Connecting Nodes": [
+        {
+            "text": "World Crisis",
+            "arrows_from": 5
+        },
+        {
+            "text": "Staff Roll",
+            "arrows_from": 1
+        }
+    ]
+}
