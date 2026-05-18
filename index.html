@@ -2,103 +2,201 @@
 <html lang="en">
 
 <head>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.11.13/lib/p5.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.13/lib/addons/p5.sound.min.js"></script> -->
-
-
-
-  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-  <meta charset="utf-8" />  
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.13/lib/p5.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.13/lib/addons/p5.sound.min.js"></script>
+  <meta charset="utf-8" />
 </head>
 
 <body>
-  <main>
-    <div id="container"></div>
+  <main id="main">
   </main>
-  <script src="sketch.js"></script>
   <script>
-    ////
-    const notes = document.querySelectorAll(".note");
-    let ni = 3;
-    // setInterval(() => {
-    //   if (ni >= notes.length) {
-    //     // console.log("hello")
-    //     ni = 0;
-    //     notes.forEach(note => {
-    //       note.style.color = "black";
-    //       note.style.fill = "black";
-    //     });
-    //   }
-    //   notes[ni].style.color = "orange";
-    //   notes[ni].style.fill = "orange";
-    //   ni++;
-    //   console.log(ni, notes.length, notes)
-    // }, 1000);
+    let attack = 0.001;
+    let decay = 0.05;
+    let sustain = 0.707;
+    let release = 0.75;
+    let gain = .707;
 
-    // const obj = document.getElementById("prelude-3");
+    let osc = new p5.Oscillator();
+    osc.freq(midi2Hz(64));
+    let env = new p5.Envelope(attack, gain, decay, gain);
+    env.setADSR(attack, decay, sustain, release);
+    env.setRange(gain, 0);
+    env.setExp(false);
 
-    // obj.addEventListener("load", () => {
-    // const scoreSvg = obj.contentDocument;
-    // const notes = scoreSvg.querySelectorAll(".note");
-    // notes.forEach(note => {
-    //     note.style.color = "orange";
-    //     note.style.fill = "orange";
-    //   });      
-    // });
 
+    const parser = new DOMParser();
+    score_xml = {};
+    score_svg = {};
 
     [
-      'svg/aerith-1.svg',
-      'svg/aerith-2.svg',
-      'svg/barret-1.svg',
-      'svg/bombing-mission-1.svg',
-      'svg/chocobo-1.svg',
-      'svg/cid-1.svg',
-      'svg/fanfare-1.svg',
-      'svg/fighting-1.svg',
-      'svg/fighting-2.svg',
-      'svg/fighting-3.svg',
-      'svg/fighting-4.svg',
-      'svg/lifestream-1.svg',
-      'svg/lifestream-2.svg',
-      'svg/main-theme-1.svg',
-      'svg/oppressed-people-1.svg',
-      'svg/oppressed-people-2.svg',
-      'svg/prelude-1.svg',
-      'svg/prelude-2.svg',
-      'svg/prelude-3.svg',
-      'svg/red-xii-1.svg',
-      'svg/red-xii-2.svg',
-      'svg/tifa-1.svg',
-      'svg/yuffie-1.svg',
+      'aerith-1',
+      'aerith-2',
+      'barret-1',
+      'bombing-mission-1',
+      'chocobo-1',
+      'cid-1',
+      'fanfare-1',
+      'fighting-1',
+      'fighting-2',
+      'fighting-3',
+      'fighting-4',
+      'lifestream-1',
+      'lifestream-2',
+      'main-theme-1',
+      'oppressed-people-1',
+      'oppressed-people-2',
+      'prelude-1',
+      'prelude-2',
+      'prelude-3',
+      'red-xii-1',
+      'red-xii-2',
+      'tifa-1',
+      'yuffie-1',
     ].forEach(score_file => {
 
-      fetch(score_file)
+      const container = document.createElement("div");
+      container.className = "score-container";
+      container.id = score_file;
+
+      document.getElementById("main").appendChild(container);
+
+      fetch(`xml/${score_file}.musicxml`)
+        .then(res => res.text())
+        .then(xml => {
+          score_xml[score_file] = parser.parseFromString(xml, "text/xml");
+        });
+
+      fetch(`svg/${score_file}.svg`)
         .then(res => res.text())
         .then(svg => {
-          const doc = new DOMParser().parseFromString(svg, "image/svg+xml");
+          const doc = parser.parseFromString(svg, "image/svg+xml");
           const svgDom = doc.querySelector("svg");
-          const notes = svgDom.querySelectorAll(".note");
-
+          const staffElements = svgDom.querySelector(".layer");
+          const notes = staffElements.querySelectorAll(".note,.rest");
+          score_svg[score_file] = notes
 
           notes.forEach((note, ni) => {
-
-
-            note.addEventListener("mousedown", () => {
-              console.log("clicked", note.id, ni);
-              note.style.fill = "red";
+            note.addEventListener("mouseover", () => {
+              note.style.fill = "orange";
             });
 
+            note.addEventListener("mousedown", () => {
+              const containerSvg = note.closest(".score-container");
+              let noteData = score_xml[containerSvg.id].querySelectorAll('note')[ni];
 
-            note.addEventListener("mouseup", () => {              
+              if (noteData.querySelector('rest')) {
+                return
+              }
+              else {
+                const step = noteData.querySelector('step').textContent;
+                const octave = Number(noteData.querySelector('octave').textContent);
+                note.style.fill = "red";
+
+                osc.freq(midi2Hz(xmlPitch2Midi(noteData)));
+
+                osc.start();
+                env.play(osc);
+              }
+            });
+
+            note.addEventListener("mouseout", () => {
               note.style.fill = "black";
             });
 
           });
 
-          document.getElementById("container").appendChild(svgDom);          
+          const clef = svgDom.querySelector(".clef");
+
+          clef.addEventListener("mouseover", () => {
+            clef.style.fill = "orange";
+          });
+
+          clef.addEventListener("mousedown", () => {
+            osc.freq(0);
+            osc.start();
+            env.play(osc);
+            const containerSvg = clef.closest(".score-container");
+            const themeId = containerSvg.id;
+            playTheme(themeId);
+            clef.style.fill = "red";
+          });
+
+
+          clef.addEventListener("mouseout", () => {
+            clef.style.fill = "black";
+          });
+          // svgDom.id = score_file;
+          document.getElementById(score_file).appendChild(svgDom);
         });
     })
+
+
+
+    function xmlPitch2Midi(noteXml) {
+      const step = noteXml.querySelector('step').textContent;
+      const octave = Number(noteXml.querySelector('octave').textContent);
+      let midiNote = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11, }[step] + (1 + octave) * 12
+      let acc = noteXml.querySelector('accidental')
+      if (acc) { // check no parentheses
+        if (acc.textContent === 'flat')
+          midiNote--;
+        else if (acc.textContent === 'sharp')
+          midiNote++;
+      }
+      return midiNote
+    }
+
+
+    function midi2Hz(midiNoteNumber) {
+      return Math.pow(2, (midiNoteNumber - 69) / 12.0) * 440.0;
+    }
+
+    function xmlPitch2Freq(noteXml) {
+      return midi2Hz(xmlPitch2Midi(noteXml));
+    }
+
+    function playTheme(themeId) {      
+      let noteData = score_xml[themeId].querySelectorAll('note');
+      let eventTime = 0.05;
+      const bpm = 120;
+      // milliseconds per 16th note
+      const msp16 = 1000 * 60 / (4 * bpm)
+      
+      for (let n = 0; n < noteData.length; n++) {
+
+        const isRest = (noteData[n].querySelector('rest')) ? true : false;
+        const isTied = noteData[n].querySelector("tied") ? true : false;        
+        const isEndTie = (isTied && noteData[n].querySelector("tied").getAttribute('type') === 'stop')
+        const isDotted = (noteData[n].querySelector('dot')) ? true : false;
+        const freq = (isRest || isEndTie) ? 0.0 : xmlPitch2Freq(noteData[n]);
+        const noteType = noteData[n].querySelector('type').textContent;
+        const dur = type2duration(noteData[n].querySelector('type').textContent) * ((isDotted) ? 1.5 : 1.0);
+        
+        setTimeout(() => {
+          score_svg[themeId][n].style.fill = "orange"
+          osc.freq(freq);
+          env.play(osc);
+        }, eventTime)
+        eventTime += dur * msp16;        
+      }
+      setTimeout(() => {
+        score_svg[themeId].forEach(note => {
+          note.style.fill = "black";
+        })
+      }, eventTime + 500)
+    }
+
+
+    function type2duration(noteType) {
+      return {
+        "whole": 16,
+        "half": 8,
+        "quarter": 4,
+        "eighth": 2,
+        "16th": 1,
+      }[noteType]
+    }
   </script>
 </body>
 
