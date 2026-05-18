@@ -62,7 +62,9 @@
         <duration>1</duration>
         <type>16th</type>
         <beam number="1">end</beam>
-      </note>      
+      </note>
+
+
       <barline location="right">
         <bar-style>none</bar-style>
       </barline>

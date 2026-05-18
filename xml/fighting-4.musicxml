@@ -26,12 +26,22 @@
 
       <note>
         <pitch>
-          <step>C</step>
+          <step>E</step>
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
         <type>quarter</type>
+        <accidental>flat</accidental>
+      </note>
 
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>5</octave>
+        </pitch>
+        <duration>4</duration>
+        <type>half</type>
+        <dot />
       </note>
 
       <note>
@@ -41,33 +51,19 @@
         </pitch>
         <duration>4</duration>
         <type>quarter</type>
+        <accidental>flat</accidental>
       </note>
 
-      <note>
-        <pitch>
-          <step>D</step>
-          <alter>-1</alter>
-          <octave>5</octave>
-        </pitch>
-        <duration>4</duration>
-        <type>quarter</type>
-        <accidental parentheses="yes">flat</accidental>
-      </note>
       <note>
         <pitch>
           <step>C</step>
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
-        <type>quarter</type>
-
-      </note>
-      <!-- 
-      <note>
-        <rest/>
-        <duration>4</duration>
         <type>half</type>
-      </note> -->
+        <dot />
+      </note>
+
       <barline location="right">
         <bar-style>none</bar-style>
       </barline>

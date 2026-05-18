@@ -13,7 +13,7 @@ $(OUTPUT_DIR):
 
 # Rule for individual conversions
 $(OUTPUT_DIR)/%.svg: $(INPUT_DIR)/%.musicxml | $(OUTPUT_DIR)
-	verovio $< -o $@  --remove-ids  --xml-id-checksum --adjust-page-height  --adjust-page-width --footer none
+	verovio $< -o $@  --spacing-linear 0.5 --spacing-non-linear 0.35  --left-margin-accid 2.0 --remove-ids  --xml-id-checksum --adjust-page-height  --adjust-page-width --footer none
 
 clean:
 	rm -rf $(OUTPUT_DIR)

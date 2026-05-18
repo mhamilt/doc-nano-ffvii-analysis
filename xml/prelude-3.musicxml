@@ -26,20 +26,18 @@
 
       <note>
         <pitch>
-          <step>C</step>
+          <step>E</step>
+          <alter>-1</alter>
           <octave>5</octave>
         </pitch>
-
         <duration>4</duration>
         <type>eighth</type>
-
+        <accidental parentheses="no">flat</accidental>
         <time-modification>
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
         </time-modification>
-
         <beam number="1">begin</beam>
-
         <notations>
           <tuplet type="start" bracket="yes" />
         </notations>
@@ -107,8 +105,8 @@
 
       <note>
         <pitch>
-          <step>D</step>
-          <octave>5</octave>
+          <step>B</step>
+          <octave>4</octave>
         </pitch>
 
         <duration>4</duration>
@@ -124,7 +122,7 @@
 
       <note>
         <pitch>
-          <step>E</step>
+          <step>C</step>
           <octave>5</octave>
         </pitch>
 
@@ -146,8 +144,8 @@
 
       <note>
         <pitch>
-          <step>C</step>
-          <octave>5</octave>
+          <step>G</step>
+          <octave>4</octave>
         </pitch>
 
         <duration>4</duration>
@@ -167,8 +165,8 @@
 
       <note>
         <pitch>
-          <step>D</step>
-          <octave>5</octave>
+          <step>F</step>
+          <octave>4</octave>
         </pitch>
 
         <duration>4</duration>
@@ -178,14 +176,14 @@
           <actual-notes>3</actual-notes>
           <normal-notes>2</normal-notes>
         </time-modification>
-
+        <accidental parentheses="no">sharp</accidental>
         <beam number="1">continue</beam>
       </note>
 
       <note>
         <pitch>
-          <step>E</step>
-          <octave>5</octave>
+          <step>G</step>
+          <octave>4</octave>
         </pitch>
 
         <duration>4</duration>
@@ -206,8 +204,8 @@
 
       <note>
         <pitch>
-          <step>C</step>
-          <octave>5</octave>
+          <step>E</step>
+          <octave>4</octave>
         </pitch>
 
         <duration>4</duration>
@@ -219,7 +217,7 @@
         </time-modification>
 
         <beam number="1">begin</beam>
-
+        <accidental parentheses="no">flat</accidental>
         <notations>
           <tuplet type="start" bracket="yes" />
         </notations>
@@ -228,7 +226,7 @@
       <note>
         <pitch>
           <step>D</step>
-          <octave>5</octave>
+          <octave>4</octave>
         </pitch>
 
         <duration>4</duration>
@@ -245,7 +243,7 @@
       <note>
         <pitch>
           <step>E</step>
-          <octave>5</octave>
+          <octave>4</octave>
         </pitch>
 
         <duration>4</duration>

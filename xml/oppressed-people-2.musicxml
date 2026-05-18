@@ -26,12 +26,39 @@
 
       <note>
         <pitch>
-          <step>C</step>
-          <octave>5</octave>
+          <step>B</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <type>half</type>
+        <accidental>flat</accidental>
+      </note>
+
+      <note>
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
         </pitch>
         <duration>4</duration>
         <type>quarter</type>
+      </note>
 
+      <note>
+        <pitch>
+          <step>B</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <type>half</type>
+      </note>
+
+      <note>
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
+        <duration>4</duration>
+        <type>quarter</type>
       </note>
 
       <note>
@@ -45,29 +72,32 @@
 
       <note>
         <pitch>
-          <step>D</step>
-          <alter>-1</alter>
-          <octave>5</octave>
+          <step>G</step>
+          <octave>4</octave>
         </pitch>
         <duration>4</duration>
         <type>quarter</type>
-        <accidental parentheses="yes">flat</accidental>
       </note>
+
       <note>
         <pitch>
-          <step>C</step>
-          <octave>5</octave>
+          <step>F</step>
+          <octave>4</octave>
         </pitch>
         <duration>4</duration>
         <type>quarter</type>
-
       </note>
-      <!-- 
+
       <note>
-        <rest/>
+        <pitch>
+          <step>G</step>
+          <octave>4</octave>
+        </pitch>
         <duration>4</duration>
         <type>half</type>
-      </note> -->
+        <dot/>
+      </note>
+
       <barline location="right">
         <bar-style>none</bar-style>
       </barline>

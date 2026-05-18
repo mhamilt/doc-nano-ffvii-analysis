@@ -36,7 +36,7 @@
 
       <note>
         <pitch>
-          <step>B</step>
+          <step>G</step>
           <octave>4</octave>
         </pitch>
         <duration>4</duration>
@@ -45,22 +45,11 @@
 
       <note>
         <pitch>
-          <step>D</step>
-          <alter>-1</alter>
-          <octave>5</octave>
+          <step>B</step>
+          <octave>4</octave>
         </pitch>
         <duration>4</duration>
-        <type>quarter</type>
-        <accidental parentheses="yes">flat</accidental>
-      </note>
-      <note>
-        <pitch>
-          <step>C</step>
-          <octave>5</octave>
-        </pitch>
-        <duration>4</duration>
-        <type>quarter</type>
-
+        <type>half</type>
       </note>
       <!-- 
       <note>
