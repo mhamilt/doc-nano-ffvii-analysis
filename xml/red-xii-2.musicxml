@@ -25,7 +25,7 @@
       </attributes>
 
       <direction>
-        <sound tempo="120" />
+        <sound tempo="70" />
       </direction>
       
 
@@ -74,7 +74,7 @@
           <octave>5</octave>
         </pitch>
         <duration>1</duration>
-        <type>half</type>
+        <type>quarter</type>
         <notations>
           <articulations>
             <staccato />

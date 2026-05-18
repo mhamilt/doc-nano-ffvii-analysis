@@ -24,8 +24,8 @@
         </clef>
       </attributes>
 
-      <direction>
-        <sound tempo="120" />
+      <direction>        
+        <sound swing="yes" tempo="120" />
       </direction>
       
 

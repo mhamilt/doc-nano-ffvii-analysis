@@ -25,14 +25,13 @@
       </attributes>
 
       <direction>
-        <sound tempo="120" />
+        <sound tempo="80" />
       </direction>
       
 
       <note>
         <pitch>
-          <step>E</step>
-          <alter>-1</alter>
+          <step>E</step>          
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
@@ -68,6 +67,7 @@
       <note>
         <pitch>
           <step>E</step>
+          <alter>-1</alter>
           <octave>5</octave>
         </pitch>
 
@@ -248,6 +248,7 @@
       <note>
         <pitch>
           <step>E</step>
+          <alter>-1</alter>
           <octave>4</octave>
         </pitch>
 

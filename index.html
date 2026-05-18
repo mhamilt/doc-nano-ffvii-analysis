@@ -14,7 +14,7 @@
     let attack = 0.001;
     let decay = 0.05;
     let sustain = 0.707;
-    let release = 0.75;
+    let release = 1.75;
     let gain = .707;
 
     let osc = new p5.Oscillator();
@@ -144,6 +144,10 @@
         else if (acc.textContent === 'sharp')
           midiNote++;
       }
+      let alter = noteXml.querySelector('alter')
+      if (alter)
+        midiNote += Number(alter.textContent)
+      
       return midiNote
     }
 
@@ -156,29 +160,31 @@
       return midi2Hz(xmlPitch2Midi(noteXml));
     }
 
-    function playTheme(themeId) {      
+    function playTheme(themeId) {
       let noteData = score_xml[themeId].querySelectorAll('note');
       let eventTime = 0.05;
-      const bpm = 120;
+      const bpm = Number(score_xml[themeId].querySelector("sound").getAttribute('tempo'))
       // milliseconds per 16th note
       const msp16 = 1000 * 60 / (4 * bpm)
-      
-      for (let n = 0; n < noteData.length; n++) {
 
+      for (let n = 0; n < noteData.length; n++) {
         const isRest = (noteData[n].querySelector('rest')) ? true : false;
-        const isTied = noteData[n].querySelector("tied") ? true : false;        
+        const isTied = noteData[n].querySelector("tied") ? true : false;
+        const isTriplet = noteData[n].querySelector("time-modification") ? true : false;
         const isEndTie = (isTied && noteData[n].querySelector("tied").getAttribute('type') === 'stop')
         const isDotted = (noteData[n].querySelector('dot')) ? true : false;
-        const freq = (isRest || isEndTie) ? 0.0 : xmlPitch2Freq(noteData[n]);
         const noteType = noteData[n].querySelector('type').textContent;
-        const dur = type2duration(noteData[n].querySelector('type').textContent) * ((isDotted) ? 1.5 : 1.0);
-        
+        const dur = type2duration(noteData[n].querySelector('type').textContent) * ((isDotted) ? 1.5 : 1.0) * ((isTriplet) ? 0.666 : 1.0);
+
         setTimeout(() => {
           score_svg[themeId][n].style.fill = "orange"
-          osc.freq(freq);
-          env.play(osc);
+
+          if (!isRest && !isEndTie) {
+            osc.freq(xmlPitch2Freq(noteData[n]));
+            env.play(osc);
+          }
         }, eventTime)
-        eventTime += dur * msp16;        
+        eventTime += dur * msp16;
       }
       setTimeout(() => {
         score_svg[themeId].forEach(note => {
