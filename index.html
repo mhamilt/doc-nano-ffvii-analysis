@@ -136,7 +136,7 @@
     function xmlPitch2Midi(noteXml) {
       const step = noteXml.querySelector('step').textContent;
       const octave = Number(noteXml.querySelector('octave').textContent);
-      let midiNote = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11, }[step] + (1 + octave) * 12
+      let midiNote = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11, }[step] + (2 + octave) * 12
       let acc = noteXml.querySelector('accidental')
       if (acc) { // check no parentheses
         if (acc.textContent === 'flat')
@@ -147,7 +147,7 @@
       let alter = noteXml.querySelector('alter')
       if (alter)
         midiNote += Number(alter.textContent)
-      
+
       return midiNote
     }
 
@@ -166,6 +166,9 @@
       const bpm = Number(score_xml[themeId].querySelector("sound").getAttribute('tempo'))
       // milliseconds per 16th note
       const msp16 = 1000 * 60 / (4 * bpm)
+      const isSwing = (score_xml[themeId].querySelector("sound").getAttribute('swing')) ? true : false;
+      console.log(isSwing)
+      let eigthBeat = 0;
 
       for (let n = 0; n < noteData.length; n++) {
         const isRest = (noteData[n].querySelector('rest')) ? true : false;
@@ -173,8 +176,19 @@
         const isTriplet = noteData[n].querySelector("time-modification") ? true : false;
         const isEndTie = (isTied && noteData[n].querySelector("tied").getAttribute('type') === 'stop')
         const isDotted = (noteData[n].querySelector('dot')) ? true : false;
+
         const noteType = noteData[n].querySelector('type').textContent;
         const dur = type2duration(noteData[n].querySelector('type').textContent) * ((isDotted) ? 1.5 : 1.0) * ((isTriplet) ? 0.666 : 1.0);
+
+        let swingMult = 1;
+        if (isSwing) {
+          if (eigthBeat % 2)
+            swingMult = 0.333;
+          else
+            swingMult = 0.6666;
+        }
+        
+        let timeDelta = swingMult * dur * msp16;
 
         setTimeout(() => {
           score_svg[themeId][n].style.fill = "orange"
@@ -184,7 +198,8 @@
             env.play(osc);
           }
         }, eventTime)
-        eventTime += dur * msp16;
+        eventTime += timeDelta;
+        eigthBeat += dur / 2;      
       }
       setTimeout(() => {
         score_svg[themeId].forEach(note => {

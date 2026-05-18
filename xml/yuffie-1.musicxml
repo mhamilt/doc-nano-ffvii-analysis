@@ -24,10 +24,39 @@
         </clef>
       </attributes>
 
-      <direction>        
-        <sound swing="yes" tempo="120" />
+      <direction>
+        <sound swing="yes" tempo="60" />
+        <direction-type>
+          <metronome>
+            <metronome-note>
+              <metronome-type>eighth</metronome-type>
+              <metronome-beam number="1">begin</metronome-beam>
+            </metronome-note>
+            <metronome-note>
+              <metronome-type>eighth</metronome-type>
+              <metronome-beam number="1">end</metronome-beam>
+            </metronome-note>
+            <metronome-relation>equals</metronome-relation>
+            <metronome-note>
+              <metronome-type>quarter</metronome-type>
+              <metronome-tuplet bracket="yes" show-number="actual" type="start">
+                <actual-notes>3</actual-notes>
+                <normal-notes>2</normal-notes>
+                <normal-type>eighth</normal-type>
+              </metronome-tuplet>
+            </metronome-note>
+            <metronome-note>
+              <metronome-type>eighth</metronome-type>
+              <metronome-tuplet type="stop">
+                <actual-notes>3</actual-notes>
+                <normal-notes>2</normal-notes>
+                <normal-type>eighth</normal-type>
+              </metronome-tuplet>
+            </metronome-note>
+          </metronome>
+        </direction-type>
       </direction>
-      
+
 
       <note>
         <rest />
@@ -111,7 +140,7 @@
 
       <note>
         <pitch>
-          <step>G</step>
+          <step>F</step>
           <octave>4</octave>
         </pitch>
         <duration>2</duration>
