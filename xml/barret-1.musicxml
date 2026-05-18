@@ -24,6 +24,10 @@
         </clef>
       </attributes>
 
+      <direction>
+        <sound tempo="120" />
+      </direction>
+      
       <note>
         <rest />
         <duration>4</duration>
@@ -51,7 +55,6 @@
         <beam number="1">end</beam>
       </note>
 
-
       <note>
         <pitch>
           <step>E</step>
@@ -62,7 +65,7 @@
       </note>
 
       <note>
-        <rest />
+        <rest/>
         <duration>8</duration>
         <type>half</type>
       </note>

@@ -24,6 +24,11 @@
         </clef>
       </attributes>
 
+      <direction>
+        <sound tempo="120" />
+      </direction>
+      
+
       <note>
         <rest />
         <duration>4</duration>

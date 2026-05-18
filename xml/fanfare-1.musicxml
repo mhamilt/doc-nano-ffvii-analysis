@@ -24,9 +24,13 @@
         </clef>
       </attributes>
 
+      <direction>
+        <sound tempo="120" />
+      </direction>
+
       <note>
         <pitch>
-          <step>C</step>          
+          <step>C</step>
           <octave>5</octave>
         </pitch>
         <duration>4</duration>
