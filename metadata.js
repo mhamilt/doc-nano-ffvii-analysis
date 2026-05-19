@@ -313,7 +313,7 @@ export const nodes = [
     id: 'sending-a-dream-into-the-universe'
   },
   {
-    connections: ['red_xii_1','red_xii_2'],
+    connections: ['red_xiii_1','red_xiii_2'],
     text: 'Cosmo\nCanyon',
     arrows_from: 2,
     x: 1632,
@@ -321,7 +321,7 @@ export const nodes = [
     id: 'cosmo-canyon'
   },
   {
-    connections: ['red_xii_1'],
+    connections: ['red_xiii_1'],
     text: 'Great Warrior',
     arrows_from: 1,
     x: 1530,
@@ -329,7 +329,7 @@ export const nodes = [
     id: 'great-warrior'
   },
   {
-    connections: ['red_xii_2'],
+    connections: ['red_xiii_2'],
     text: 'Red XIII’s\nTheme',
     arrows_from: 1,
     x: 1731,
@@ -351,7 +351,7 @@ export const nodes = [
     connections: ['fanfare_1'],
     text: 'A Great\nSuccess',
     arrows_from: 1,
-    x: 2794,
+    x: 2770,
     y: 1415,
     id: 'a-great-success'
   },
