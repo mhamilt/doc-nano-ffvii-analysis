@@ -33,7 +33,7 @@
     }
 
     .score-container svg {
-      height: 10rem;
+      height: 8rem;
       width: auto;
       fill: #B1FCCF;
       stroke: #B1FCCF;
@@ -122,7 +122,7 @@
 
 
     let positions = {
-      aerith_1: { x: 280, y: 1419 },
+      aerith_1: { x: 310, y: 1419 },
       aerith_2: { x: 804, y: 1228 },
       barret_1: { x: 1219, y: 396 },
       bombing_mission_1: { x: 2308, y: 1547 },
@@ -499,7 +499,7 @@
         const score = positions[scoreId];
         const line = document.createElementNS(backgroundSvg.namespaceURI, "line");
         const el = document.getElementById(scoreId);
-        const scaleWidth = 1.1;
+        const scaleWidth = 1.0;
         const scaleHeight = 0.9;
         const end = getArrowEndPoint(node.x, node.y, score.x, score.y, el.offsetWidth * scaleWidth, el.offsetHeight * scaleHeight);
 
@@ -555,8 +555,8 @@
 
       // Half dimensions
       // 450/688 of width
-      const hw = width * 0.5 * ((dx < 0) ? 0.9 : 1.0);
-      const hh = height * 0.5 * ((dy < 0) ? 0.65 : 1.0);
+      const hw = width * 0.5 * ((dx < 0) ? 1.15 : 1.3);
+      const hh = height * 0.5 * ((dy < 0) ? 0.85 : 1.2);
 
       // Distance to rectangle edge along ray
       const scaleX = hw / Math.abs(ux);

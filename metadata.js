@@ -241,7 +241,7 @@ export const nodes = [
     connections: ['yuffie_1'],
     text: 'Descendant of\nShinobi',
     arrows_from: 1,
-    x: 186,
+    x: 166,
     y: 1021,
     id: 'descendant-of-shinobi'
   },
@@ -281,7 +281,7 @@ export const nodes = [
     connections: ['aerith_1','aerith_2'],
     text: 'Flowers\nBlooming in\nthe Church',
     arrows_from: 1,
-    x: 632,
+    x: 660,
     y: 1405,
     id: 'flowers-blooming-in-the-church'
   },
