@@ -1,268 +1,176 @@
 {
     "Prelude/Sephiroth": [
-        {
-            "text": "The Prelude",
-            "arrows_from": 1
-        },
-        {
-            "text": "Continue?",
-            "arrows_from": 1
-        },
-        {
-            "text": "Chasing the Black-Caped Man",
-            "arrows_from": 1
-        },
-        {
-            "text": "Anxious Heart",
-            "arrows_from": 1
-        },
-        {
-            "text": "Those Chosen By the Planet",
-            "arrows_from": 1
-        },
-        {
-            "text": "Weapon Raid",
-            "arrows_from": 1
-        },
-        {
-            "text": "Birth of a God",
-            "arrows_from": 1
-        },
-        {
-            "text": "One-Winged Angel",
-            "arrows_from": 1
+        {"text": "The Prelude","arrows_from": 1},
+        {"text": "Continue?","arrows_from": 1},
+        {"text": "Chasing the Black-Caped Man","arrows_from": 1},
+        {"text": "Anxious Heart","arrows_from": 1},
+        {"text": "Those Chosen By the Planet","arrows_from": 1},
+        {"text": "Weapon Raid","arrows_from": 1},
+        {"text": "Birth of a God","arrows_from": 1},
+        {"text": "One-Winged Angel","arrows_from": 1
         }
     ],
     "Barret": [
-        {
-            "text": "Barret’s Theme",
-            "arrows_from": 1
-        },
-        {
-            "text": "Mark of the Traitor",
-            "arrows_from": 1
+        {"text": "Barret’s Theme","arrows_from": 1},
+        {"text": "Mark of the Traitor","arrows_from": 1
         }
     ],
     "Main Theme": [
-        {
-            "text": "Main Theme",
-            "arrows_from": 1
-        },
-        {
-            "text": "Highwind Takes to the Skies",
-            "arrows_from": 1
-        },
-        {
-            "text": "Holding My Thoughts in My Heart",
-            "arrows_from": 1
-        },
-        {
-            "text": "Interrupted by Fireworks",
-            "arrows_from": 1
-        },
-        {
-            "text": "Steal the Tiny Bronco!",
-            "arrows_from": 1
-        },
-        {
-            "text": "That Day Five Years Ago",
-            "arrows_from": 1
-        },
-        {
-            "text": "Who Am I?",
-            "arrows_from": 1
+        {"text": "Main Theme","arrows_from": 1},
+        {"text": "Highwind Takes to the Skies","arrows_from": 1},
+        {"text": "Holding My Thoughts in My Heart","arrows_from": 1},
+        {"text": "Interrupted by Fireworks","arrows_from": 1},
+        {"text": "Steal the Tiny Bronco!","arrows_from": 1},
+        {"text": "That Day Five Years Ago","arrows_from": 1},
+        {"text": "Who Am I?","arrows_from": 1
         }
     ],
     "Chocobo": [
-        {
-            "text": "Cinco de Chocobo",
-            "arrows_from": 1
-        },
-        {
-            "text": "Farm Boy",
-            "arrows_from": 0
-        },
-        {
-            "text": "Waltz de Chocobo",
-            "arrows_from": 1
-        },
-        {
-            "text": "Fiddle de Chocobo",
-            "arrows_from": 1
-        },
-        {
-            "text": "Electric de Chocobo",
-            "arrows_from": 1
+        {"text": "Cinco de Chocobo","arrows_from": 1},
+        {"text": "Farm Boy","arrows_from": 0},
+        {"text": "Waltz de Chocobo","arrows_from": 1},
+        {"text": "Fiddle de Chocobo","arrows_from": 1},
+        {"text": "Electric de Chocobo","arrows_from": 1
         }
     ],
     "Yuffie": [
-        {
-            "text": "Descendant of Shinobi",
-            "arrows_from": 1
-        },
-        {
-            "text": "Stolen Materia",
-            "arrows_from": 1
+        {"text": "Descendant of Shinobi","arrows_from": 1},
+        {"text": "Stolen Materia","arrows_from": 1
         }
     ],
     "Tifa": [
-        {
-            "text": "Tifa’s Theme",
-            "arrows_from": 1
+        {"text": "Tifa’s Theme","arrows_from": 1
         }
     ],
     "Aerith": [
-        {
-            "text": "Judgment Day",
-            "arrows_from": 1
-        },
-        {
-            "text": "Aerith’s Theme",
-            "arrows_from": 2
-        },
-        {
-            "text": "Flowers Blooming in the Church",
-            "arrows_from": 1
-        },
-        {
-            "text": "Reunion",
-            "arrows_from": 1
+        {"text": "Judgment Day","arrows_from": 1},
+        {"text": "Aerith’s Theme","arrows_from": 2},
+        {"text": "Flowers Blooming in the Church","arrows_from": 1},
+        {"text": "Reunion","arrows_from": 1
         }
     ],
     "Cid": [
-        {
-            "text": "Cid’s Theme",
-            "arrows_from": 1
-        },
-        {
-            "text": "The Countdown Begins",
-            "arrows_from": 1
-        },
-        {
-            "text": "Sending a Dream Into the Universe",
-            "arrows_from": 1
+        {"text": "Cid’s Theme","arrows_from": 1},
+        {"text": "The Countdown Begins","arrows_from": 1},
+        {"text": "Sending a Dream Into the Universe","arrows_from": 1
         }
     ],
     "Red XIII": [
-        {
-            "text": "Cosmo Canyon",
-            "arrows_from": 2
-        },
-        {
-            "text": "Great Warrior",
-            "arrows_from": 1
-        },
-        {
-            "text": "Red XIII’s Theme",
-            "arrows_from": 1
+        {"text": "Cosmo Canyon","arrows_from": 2},
+        {"text": "Great Warrior","arrows_from": 1},
+        {"text": "Red XIII’s Theme","arrows_from": 1
         }
     ],
     "Lifestream": [
-        {
-            "text": "Opening",
-            "arrows_from": 2
-        },
-        {
-            "text": "Lifestream",
-            "arrows_from": 1
+        {"text": "Opening","arrows_from": 2},
+        {"text": "Lifestream","arrows_from": 1
         }
     ],
     "Bombing Mission": [
-        {
-            "text": "Bombing Mission",
-            "arrows_from": 1
-        },
-        {
-            "text": "Hurry!",
-            "arrows_from": 1
+        {"text": "Bombing Mission","arrows_from": 1},
+        {"text": "Hurry!","arrows_from": 1
         }
     ],
     "Fanfare": [
-        {
-            "text": "A Great Success",
-            "arrows_from": 1
-        },
-        {
-            "text": "Fanfare",
-            "arrows_from": 1
-        },
-        {
-            "text": "Tango of Tears",
-            "arrows_from": 1
+        {"text": "A Great Success","arrows_from": 1},
+        {"text": "Fanfare","arrows_from": 1},
+        {"text": "Tango of Tears","arrows_from": 1
         }
     ],
     "Oppressed People": [
-        {
-            "text": "Oppressed People",
-            "arrows_from": 1
-        },
-        {
-            "text": "It’s Hard to Stand on Two Feet, Isn’t It?",
-            "arrows_from": 1
-        },
-        {
-            "text": "If You Open Your Heart…",
-            "arrows_from": 1
+        {"text": "Oppressed People","arrows_from": 1},
+        {"text": "It’s Hard to Stand on Two Feet, Isn’t It?","arrows_from": 1},
+        {"text": "If You Open Your Heart…","arrows_from": 1
         }
     ],
     "Midgar/Fighting": [
-        {
-            "text": "Under the Rotting Pizza",
-            "arrows_from": 1
-        },
-        {
-            "text": "Those Who Fight",
-            "arrows_from": 1
-        },
-        {
-            "text": "Trail of Blood",
-            "arrows_from": 0
-        },
-        {
-            "text": "Hurry Faster!",
-            "arrows_from": 1
-        },
-        {
-            "text": "The Mako Cannon Is Fired",
-            "arrows_from": 1
-        },
-        {
-            "text": "Shinra Company",
-            "arrows_from": 2
-        },
-        {
-            "text": "Infiltrating Shinra Tower",
-            "arrows_from": 1
-        },
-        {
-            "text": "Shinra Army Wages a Full-Scale Attack",
-            "arrows_from": 1
-        },
-        {
-            "text": "Mako Reactor",
-            "arrows_from": 1
-        },
-        {
-            "text": "Those Who Fight Further",
-            "arrows_from": 1
-        },
-        {
-            "text": "Turks’ Theme",
-            "arrows_from": 1
-        },
-        {
-            "text": "Lurking in the Darkness",
-            "arrows_from": 1
+        {"text": "Under the Rotting Pizza","arrows_from": 1},
+        {"text": "Those Who Fight","arrows_from": 1},
+        {"text": "Trail of Blood","arrows_from": 0},
+        {"text": "Hurry Faster!","arrows_from": 1},
+        {"text": "The Mako Cannon Is Fired","arrows_from": 1},
+        {"text": "Shinra Company","arrows_from": 2},
+        {"text": "Infiltrating Shinra Tower","arrows_from": 1},
+        {"text": "Shinra Army Wages a Full-Scale Attack","arrows_from": 1},
+        {"text": "Mako Reactor","arrows_from": 1},
+        {"text": "Those Who Fight Further","arrows_from": 1},
+        {"text": "Turks’ Theme","arrows_from": 1},
+        {"text": "Lurking in the Darkness","arrows_from": 1
         }
     ],
     "Global/Connecting Nodes": [
-        {
-            "text": "World Crisis",
-            "arrows_from": 5
-        },
-        {
-            "text": "Staff Roll",
-            "arrows_from": 1
+        {"text": "World Crisis","arrows_from": 5},
+        {"text": "Staff Roll","arrows_from": 1
         }
     ]
 }
+
+
+
+
+
+
+
+
+
+
+
+
+mouseX: 125, mouseY: 87
+mouseX: 359, mouseY: 62
+mouseX: 390, mouseY: 122
+mouseX: 336, mouseY: 177
+mouseX: 303, mouseY: 255
+mouseX: 220, mouseY: 260
+mouseX: 142, mouseY: 257
+mouseX: 64, mouseY: 254
+mouseX: 517, mouseY: 89
+mouseX: 516, mouseY: 244
+mouseX: 687, mouseY: 84
+mouseX: 780, mouseY: 80
+mouseX: 853, mouseY: 133
+mouseX: 865, mouseY: 250
+mouseX: 690, mouseY: 258
+mouseX: 627, mouseY: 212
+mouseX: 628, mouseY: 139
+mouseX: 952, mouseY: 56
+mouseX: 1184, mouseY: 55
+mouseX: 967, mouseY: 139
+mouseX: 1042, mouseY: 135
+mouseX: 1116, mouseY: 138
+mouseX: 79, mouseY: 433
+mouseX: 347, mouseY: 434
+mouseX: 454, mouseY: 360
+mouseX: 67, mouseY: 531
+mouseX: 205, mouseY: 530
+mouseX: 268, mouseY: 596
+mouseX: 348, mouseY: 592
+mouseX: 383, mouseY: 725
+mouseX: 461, mouseY: 746
+mouseX: 539, mouseY: 737
+mouseX: 692, mouseY: 580
+mouseX: 649, mouseY: 714
+mouseX: 734, mouseY: 715
+mouseX: 850, mouseY: 448
+mouseX: 849, mouseY: 557
+mouseX: 860, mouseY: 656
+mouseX: 1088, mouseY: 654
+mouseX: 1190, mouseY: 603
+mouseX: 1304, mouseY: 681
+mouseX: 1410, mouseY: 600
+mouseX: 869, mouseY: 771
+mouseX: 1060, mouseY: 768
+mouseX: 1288, mouseY: 767
+mouseX: 1152, mouseY: 288
+mouseX: 1274, mouseY: 307
+mouseX: 1411, mouseY: 251
+mouseX: 1364, mouseY: 308
+mouseX: 1412, mouseY: 368
+mouseX: 1370, mouseY: 422
+mouseX: 1301, mouseY: 449
+mouseX: 1228, mouseY: 451
+mouseX: 1266, mouseY: 508
+mouseX: 1152, mouseY: 438
+mouseX: 1067, mouseY: 441
+mouseX: 764, mouseY: 382
+mouseX: 915, mouseY: 367

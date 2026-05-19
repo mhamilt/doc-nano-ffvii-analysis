@@ -5,12 +5,33 @@
   <script src="https://cdn.jsdelivr.net/npm/p5@1.11.13/lib/p5.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/p5@1.11.13/lib/addons/p5.sound.min.js"></script>
   <meta charset="utf-8" />
+  <style>
+    html {
+      background-color: black;
+    }
+
+    .score-container {
+      position: absolute;
+      display: inline-block;
+    }
+
+    .score-container svg {
+      /* width: 2rem; */
+      height: 10rem;
+      fill: #B1FCCF;
+      stroke: #B1FCCF;
+      color: #B1FCCF;
+      position: absolute;
+      /* transform: translate(-50%, -50%); */
+    }
+  </style>
 </head>
 
 <body>
   <main id="main">
   </main>
   <script>
+    let coordinate_scaling = 1 / 0.3;
     let attack = 0.001;
     let decay = 0.05;
     let sustain = 0.707;
@@ -19,46 +40,82 @@
 
     let osc = new p5.Oscillator();
     osc.freq(midi2Hz(64));
+
     let env = new p5.Envelope(attack, gain, decay, gain);
     env.setADSR(attack, decay, sustain, release);
     env.setRange(gain, 0);
     env.setExp(false);
 
+    let pianoKey;
+    function preload() {
+      soundFormats('wav');
+      pianoKey = loadSound("/assets/ffvii-key.wav");
+      console.log("hello");
+    }
 
+    function setup() {
+    }
+
+    let positions = {
+      'aerith_1': { x: 119, y: 602 },
+      'aerith_2': { x: 341, y: 521 },
+      'barret_1': { x: 517, y: 168 },
+      'bombing_mission_1': { x: 979, y: 656 },
+      'chocobo_1': { x: 1076, y: 54 },
+      'cid_1': { x: 486, y: 668 },
+      'fanfare_1': { x: 1301, y: 605 },
+      'fighting_1': { x: 1270, y: 240 },
+      'fighting_2': { x: 1095, y: 358 },
+      'fighting_3': { x: 1272, y: 370 },
+      'fighting_4': { x: 1376, y: 507 },
+      'lifestream_1': { x: 772, y: 508 },
+      'lifestream_2': { x: 962, y: 505 },
+      'main_theme_1': { x: 735, y: 172 },
+      'oppressed_people_1': { x: 966, y: 764 },
+      'oppressed_people_2': { x: 1179, y: 766 },
+      'prelude_1': { x: 275, y: 122 },
+      'prelude_2': { x: 179, y: 163 },
+      'prelude_3': { x: 182, y: 353 },
+      'red_xii_1': { x: 648, y: 637 },
+      'red_xii_2': { x: 736, y: 640 },
+      'tifa_1': { x: 582, y: 361 },
+      'yuffie_1': { x: 216, y: 431 },
+    }
     const parser = new DOMParser();
     score_xml = {};
     score_svg = {};
 
     [
-      'aerith-1',
-      'aerith-2',
-      'barret-1',
-      'bombing-mission-1',
-      'chocobo-1',
-      'cid-1',
-      'fanfare-1',
-      'fighting-1',
-      'fighting-2',
-      'fighting-3',
-      'fighting-4',
-      'lifestream-1',
-      'lifestream-2',
-      'main-theme-1',
-      'oppressed-people-1',
-      'oppressed-people-2',
-      'prelude-1',
-      'prelude-2',
-      'prelude-3',
-      'red-xii-1',
-      'red-xii-2',
-      'tifa-1',
-      'yuffie-1',
+      'aerith_1',
+      'aerith_2',
+      'barret_1',
+      'bombing_mission_1',
+      'chocobo_1',
+      'cid_1',
+      'fanfare_1',
+      'fighting_1',
+      'fighting_2',
+      'fighting_3',
+      'fighting_4',
+      'lifestream_1',
+      'lifestream_2',
+      'main_theme_1',
+      'oppressed_people_1',
+      'oppressed_people_2',
+      'prelude_1',
+      'prelude_2',
+      'prelude_3',
+      'red_xii_1',
+      'red_xii_2',
+      'tifa_1',
+      'yuffie_1',
     ].forEach(score_file => {
 
       const container = document.createElement("div");
       container.className = "score-container";
       container.id = score_file;
-
+      container.style.left = `${positions[score_file].x * coordinate_scaling - 500}px`;
+      container.style.top = `${positions[score_file].y * coordinate_scaling - 10}px`;
       document.getElementById("main").appendChild(container);
 
       fetch(`xml/${score_file}.musicxml`)
@@ -93,15 +150,15 @@
                 const octave = Number(noteData.querySelector('octave').textContent);
                 note.style.fill = "red";
 
-                osc.freq(midi2Hz(xmlPitch2Midi(noteData)));
-
-                osc.start();
-                env.play(osc);
+                // osc.freq(midi2Hz(xmlPitch2Midi(noteData)));
+                // osc.start();
+                // env.play(osc);
+                playKey(xmlPitch2Transpose(noteData));
               }
             });
 
             note.addEventListener("mouseout", () => {
-              note.style.fill = "black";
+              note.style.fill = "#B1FCCF";
             });
 
           });
@@ -124,7 +181,7 @@
 
 
           clef.addEventListener("mouseout", () => {
-            clef.style.fill = "black";
+            clef.style.fill = "#B1FCCF";
           });
           // svgDom.id = score_file;
           document.getElementById(score_file).appendChild(svgDom);
@@ -187,23 +244,24 @@
           else
             swingMult = 0.6666;
         }
-        
+
         let timeDelta = swingMult * dur * msp16;
 
         setTimeout(() => {
           score_svg[themeId][n].style.fill = "orange"
 
           if (!isRest && !isEndTie) {
-            osc.freq(xmlPitch2Freq(noteData[n]));
-            env.play(osc);
+            playKey(xmlPitch2Transpose(noteData[n]))
+            // osc.freq(xmlPitch2Freq(noteData[n]));
+            // env.play(osc);
           }
         }, eventTime)
         eventTime += timeDelta;
-        eigthBeat += dur / 2;      
+        eigthBeat += dur / 2;
       }
       setTimeout(() => {
         score_svg[themeId].forEach(note => {
-          note.style.fill = "black";
+          note.style.fill = "#B1FCCF";
         })
       }, eventTime + 500)
     }
@@ -217,6 +275,85 @@
         "eighth": 2,
         "16th": 1,
       }[noteType]
+    }
+
+    const mainsvg = document.getElementById("graph");
+
+    function drawNode(node) {
+      const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+      const circle = document.createElementNS(svg.namespaceURI, "circle");
+      circle.setAttribute("cx", node.x);
+      circle.setAttribute("cy", node.y);
+      circle.setAttribute("r", 40);
+      circle.setAttribute("fill", "#7fffd4");
+
+      // hover detection
+      circle.addEventListener("mouseenter", () => {
+        circle.setAttribute("stroke", "black");
+        circle.setAttribute("stroke-width", "3");
+      });
+
+      circle.addEventListener("mouseleave", () => {
+        circle.removeAttribute("stroke");
+      });
+
+      const text = document.createElementNS(svg.namespaceURI, "text");
+      text.setAttribute("x", node.x);
+      text.setAttribute("y", node.y + 5);
+      text.setAttribute("text-anchor", "middle");
+      text.textContent = node.label;
+
+      g.appendChild(circle);
+      g.appendChild(text);
+      mainsvg.appendChild(g);
+    }
+
+    function drawEdge(edge) {
+      const from = nodes.find(n => n.id === edge.from);
+      const to = nodes.find(n => n.id === edge.to);
+
+      const line = document.createElementNS(svg.namespaceURI, "line");
+      line.setAttribute("x1", from.x);
+      line.setAttribute("y1", from.y);
+      line.setAttribute("x2", to.x);
+      line.setAttribute("y2", to.y);
+      line.setAttribute("stroke", "black");
+      line.setAttribute("stroke-width", "2");
+      line.setAttribute("marker-end", "url(#arrow)");
+
+      mainsvg.appendChild(line);
+    }
+
+    // nodes.forEach(drawNode);
+    // edges.forEach(drawEdge);
+
+    function xmlPitch2Transpose(noteXml) {
+      const step = noteXml.querySelector('step').textContent;
+      const octave = Number(noteXml.querySelector('octave').textContent);
+      let transpose = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11, }[step] + ((octave-4) * 12);      
+      let acc = noteXml.querySelector('accidental')
+      if (acc) { // check no parentheses
+        if (acc.textContent === 'flat')
+          transpose--;
+        else if (acc.textContent === 'sharp')
+          transpose++;
+      }
+      let alter = noteXml.querySelector('alter')
+      if (alter)
+        transpose += Number(alter.textContent)
+
+      return transpose
+    }
+
+    function semitonesToRate(semitones) {
+      return Math.pow(2, semitones / 12);
+    }
+
+    function playKey(transpose) {
+      pianoKey.stop();     // restart cleanly
+      pianoKey.rate(semitonesToRate(transpose)); // playback speed + pitch
+      pianoKey.play();
     }
   </script>
 </body>
