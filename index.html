@@ -57,20 +57,25 @@
 </head>
 
 <body>
-  <main id="main">
-    <!-- <img src="background-text.svg" style="width:auto; height:auto;"> -->
-    <!-- <img src="node_test.svg" style="width:300px"> -->
-  </main>
+  <main id="main"></main>
   <img src="img/logo.webp" width="700px" style="top: 1545px;left: 90px;">
 
   <script type="module">
 
     import { nodes } from './metadata.js';
     let pianoKey;
+    let sounds = new Array(nodes.length);
 
     window.preload = function () {
-      soundFormats("wav");
+      soundFormats("wav", "mp3");
       pianoKey = loadSound("/assets/ffvii-key.wav");
+      nodes.forEach((n, i) => {
+        n.connections.forEach((c, j) => {
+          const soundFilename = n.id + "_" + c;
+          console.log(soundFilename);
+          // sounds[i] = loadSound(`/assets/${soundfileName}.mp3`);
+        })
+      })
       console.log("preload");
     };
 
@@ -141,8 +146,8 @@
       prelude_1: { x: 648, y: 287 },
       prelude_2: { x: 422, y: 384 },
       prelude_3: { x: 429, y: 820 },
-      red_xii_1: { x: 1528, y: 1509 },
-      red_xii_2: { x: 1735, y: 1509 },
+      red_xiii_1: { x: 1528, y: 1509 },
+      red_xiii_2: { x: 1735, y: 1509 },
       tifa_1: { x: 1372, y: 851 },
       yuffie_1: { x: 509, y: 1016 }
     }
@@ -167,8 +172,8 @@
       'prelude_1',
       'prelude_2',
       'prelude_3',
-      'red_xii_1',
-      'red_xii_2',
+      'red_xiii_1',
+      'red_xiii_2',
       'tifa_1',
       'yuffie_1',
     ]
@@ -250,10 +255,10 @@
             clef.style.fill = mainColour;
           });
 
-          // svgDom.id = score_file;
           document.getElementById(score_file).appendChild(svgDom);
           const outer = svgDom;
           const inner = outer.querySelector("svg.definition-scale");
+
           // Move children out
           while (inner.firstChild) {
             outer.appendChild(inner.firstChild);
@@ -269,25 +274,6 @@
           // Remove fixed dimensions
           outer.removeAttribute("width");
           outer.removeAttribute("height");
-          // outer.appendChild(svgDom);
-          // svgDom.removeAttribute("width");
-          // svgDom.removeAttribute("height");
-          // const g = svgDom.querySelector(".page-margin");
-          // const b = g.getBBox();
-
-          // svgDom.setAttribute(
-          //   "viewBox",
-          //   `${b.x} ${b.y} ${b.width} ${b.height}`
-          // );
-          // const tight = svgDom.getBBox();
-          console.log(score_file, svgDom.getAttribute('width'), svgDom.getBBox())
-          // const bbox = svg.getBBox();
-          // svgDom.setAttribute(
-          //   "viewBox",
-          //   `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`
-          // );
-          // svgDom.setAttribute('width',tight.width);
-
         }));
     })
 
@@ -388,7 +374,7 @@
       const octave = Number(noteXml.querySelector('octave').textContent);
       let transpose = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11, }[step] + ((octave - 4) * 12);
       let acc = noteXml.querySelector('accidental')
-      if (acc) { // check no parentheses
+      if (acc) {
         if (acc.textContent === 'flat')
           transpose--;
         else if (acc.textContent === 'sharp')
@@ -412,8 +398,6 @@
     }
 
     // Drawing Nodes
-
-
     function drawNode(node, backgroundSvg) {
       const font_size = 22.5;
       const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -511,18 +495,24 @@
         line.setAttribute("stroke-width", "5");
         line.setAttribute("marker-end", "url(#arrowhead)");
         line.setAttribute("class", `${node.id}_line`);
-
-        line.setAttribute("line-id", node.id + "_" + `${i}`);
+        const line_id = node.id + "_" + scoreId;
+        line.setAttribute("line-id", line_id);
         line.addEventListener("mouseenter", () => {
           line.setAttribute("stroke", "orange");
           backgroundSvg.querySelector(`.${node.id}`).setAttribute("fill", "orange")
-          // console.log(line.getAttribute('parent-id'), line.getAttribute('line-id'));
-          // set parent orange
         });
 
         line.addEventListener("mouseleave", () => {
+          // if track playing, skip this
           line.setAttribute("stroke", mainColour);
           backgroundSvg.querySelector(`.${node.id}`).setAttribute("fill", mainColour)
+        });
+
+        line.addEventListener("mousedown", () => {
+          // play
+          console.log(`Play Sound: ${line_id}`)
+          line.setAttribute("stroke", "red");
+          backgroundSvg.querySelector(`.${node.id}`).setAttribute("fill", "red")
         });
 
         backgroundSvg.appendChild(line);
