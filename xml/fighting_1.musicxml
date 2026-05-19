@@ -25,7 +25,7 @@
       </attributes>
 
       <direction>
-        <sound tempo="120" />
+        <sound tempo="100" />
       </direction>
       
 
@@ -101,6 +101,7 @@
       <note>
         <pitch>
           <step>D</step>
+          <alter>-1</alter>
           <octave>5</octave>
         </pitch>
         <duration>1</duration>

@@ -10,32 +10,102 @@
       background-color: black;
     }
 
+    img {
+      position: absolute;
+    }
+
+
+    svg {
+      overflow: visible;
+      /* display: block; */
+
+      width: auto;
+      height: auto;
+    }
+
     .score-container {
       position: absolute;
+      /* display: block; */
       display: inline-block;
+      width: fit-content;
+      height: fit-content;
+      overflow: visible;
     }
 
     .score-container svg {
-      /* width: 2rem; */
       height: 10rem;
+      width: auto;
       fill: #B1FCCF;
       stroke: #B1FCCF;
       color: #B1FCCF;
-      position: absolute;
-      /* transform: translate(-50%, -50%); */
+      display: block;
+      overflow: visible;
     }
-    img {
-  max-width: none;
-}
+
+    .score-container svg {
+      pointer-events: none;
+    }
+
+    .score-container svg * {
+      pointer-events: auto;
+    }
+
+    Ï img {
+      max-width: none;
+    }
   </style>
 </head>
 
-<body>  
+<body>
   <main id="main">
-    <img src="background-text.svg" style="width:auto; height:auto;">
+    <!-- <img src="background-text.svg" style="width:auto; height:auto;"> -->
+    <!-- <img src="node_test.svg" style="width:300px"> -->
   </main>
-  <script>
-    let coordinate_scaling = 1 / 0.3;
+  <img src="img/logo.webp" width="700px" style="top: 1545px;left: 90px;">
+
+  <script type="module">
+
+    import { nodes } from './metadata.js';
+    let pianoKey;
+
+    window.preload = function () {
+      soundFormats("wav");
+      pianoKey = loadSound("/assets/ffvii-key.wav");
+      console.log("preload");
+    };
+
+    window.setup = function () {
+      createCanvas(1, 1); // can even be minimal
+    };
+
+    const mainColour = "#B1FCCF"
+    const parser = new DOMParser();
+    let score_xml = {};
+    let score_svg = {};
+    const allPromises = [];
+
+    const mainEl = document.getElementById("main");
+    const backgroundContainer = document.createElement("div");
+    backgroundContainer.className = "background";
+    backgroundContainer.id = "backgroundDiv";
+    backgroundContainer.style.position = "absolute"
+    backgroundContainer.style.left = `10px`;
+    backgroundContainer.style.top = `10px`;
+    mainEl.appendChild(backgroundContainer);
+
+    let backgroundSvg;
+    allPromises.push(fetch(`./background-text.svg`)
+      .then(res => res.text())
+      .then(svg => {
+        const doc = parser.parseFromString(svg, "image/svg+xml");
+        backgroundSvg = doc.querySelector("svg");
+        backgroundContainer.appendChild(backgroundSvg);
+        // addNodes(backgroundSvg);
+      }))
+
+
+    let N = 1 / 0.424;
+
     let attack = 0.001;
     let decay = 0.05;
     let sustain = 0.707;
@@ -50,46 +120,34 @@
     env.setRange(gain, 0);
     env.setExp(false);
 
-    let pianoKey;
-    function preload() {
-      soundFormats('wav');
-      pianoKey = loadSound("/assets/ffvii-key.wav");
-      console.log("hello");
-    }
-
-    function setup() {
-    }
 
     let positions = {
-      'aerith_1': { x: 119, y: 602 },
-      'aerith_2': { x: 341, y: 521 },
-      'barret_1': { x: 517, y: 168 },
-      'bombing_mission_1': { x: 979, y: 656 },
-      'chocobo_1': { x: 1076, y: 54 },
-      'cid_1': { x: 486, y: 668 },
-      'fanfare_1': { x: 1301, y: 605 },
-      'fighting_1': { x: 1270, y: 240 },
-      'fighting_2': { x: 1095, y: 358 },
-      'fighting_3': { x: 1272, y: 370 },
-      'fighting_4': { x: 1376, y: 507 },
-      'lifestream_1': { x: 772, y: 508 },
-      'lifestream_2': { x: 962, y: 505 },
-      'main_theme_1': { x: 735, y: 172 },
-      'oppressed_people_1': { x: 966, y: 764 },
-      'oppressed_people_2': { x: 1179, y: 766 },
-      'prelude_1': { x: 275, y: 122 },
-      'prelude_2': { x: 179, y: 163 },
-      'prelude_3': { x: 182, y: 353 },
-      'red_xii_1': { x: 648, y: 637 },
-      'red_xii_2': { x: 736, y: 640 },
-      'tifa_1': { x: 582, y: 361 },
-      'yuffie_1': { x: 216, y: 431 },
+      aerith_1: { x: 280, y: 1419 },
+      aerith_2: { x: 804, y: 1228 },
+      barret_1: { x: 1219, y: 396 },
+      bombing_mission_1: { x: 2308, y: 1547 },
+      chocobo_1: { x: 2537, y: 127 },
+      cid_1: { x: 1146, y: 1575 },
+      fanfare_1: { x: 3068, y: 1426 },
+      fighting_1: { x: 2995, y: 566 },
+      fighting_2: { x: 2582, y: 844 },
+      fighting_3: { x: 3000, y: 872 },
+      fighting_4: { x: 3245, y: 1195 },
+      lifestream_1: { x: 1820, y: 1191 },
+      lifestream_2: { x: 2268, y: 1191 },
+      main_theme_1: { x: 1733, y: 405 },
+      oppressed_people_1: { x: 2278, y: 1806 },
+      oppressed_people_2: { x: 2780, y: 1806 },
+      prelude_1: { x: 648, y: 287 },
+      prelude_2: { x: 422, y: 384 },
+      prelude_3: { x: 429, y: 820 },
+      red_xii_1: { x: 1528, y: 1509 },
+      red_xii_2: { x: 1735, y: 1509 },
+      tifa_1: { x: 1372, y: 851 },
+      yuffie_1: { x: 509, y: 1016 }
     }
-    const parser = new DOMParser();
-    score_xml = {};
-    score_svg = {};
 
-    [
+    const scores = [
       'aerith_1',
       'aerith_2',
       'barret_1',
@@ -113,28 +171,32 @@
       'red_xii_2',
       'tifa_1',
       'yuffie_1',
-    ].forEach(score_file => {
+    ]
+
+    scores.forEach(score_file => {
 
       const container = document.createElement("div");
       container.className = "score-container";
       container.id = score_file;
-      container.style.left = `${positions[score_file].x * coordinate_scaling - 500}px`;
-      container.style.top = `${positions[score_file].y * coordinate_scaling - 10}px`;
+      container.style.left = `${positions[score_file].x}px`;
+      container.style.top = `${positions[score_file].y}px`;
+      container.style.transform = "translate(-50%, -50%)";
       document.getElementById("main").appendChild(container);
 
-      fetch(`xml/${score_file}.musicxml`)
+      allPromises.push(fetch(`xml/${score_file}.musicxml`)
         .then(res => res.text())
         .then(xml => {
           score_xml[score_file] = parser.parseFromString(xml, "text/xml");
-        });
+        }));
 
-      fetch(`svg/${score_file}.svg`)
+      allPromises.push(fetch(`svg/${score_file}.svg`)
         .then(res => res.text())
         .then(svg => {
           const doc = parser.parseFromString(svg, "image/svg+xml");
           const svgDom = doc.querySelector("svg");
           const staffElements = svgDom.querySelector(".layer");
           const notes = staffElements.querySelectorAll(".note,.rest");
+
           score_svg[score_file] = notes
 
           notes.forEach((note, ni) => {
@@ -162,7 +224,7 @@
             });
 
             note.addEventListener("mouseout", () => {
-              note.style.fill = "#B1FCCF";
+              note.style.fill = mainColour;
             });
 
           });
@@ -185,13 +247,53 @@
 
 
           clef.addEventListener("mouseout", () => {
-            clef.style.fill = "#B1FCCF";
+            clef.style.fill = mainColour;
           });
+
           // svgDom.id = score_file;
           document.getElementById(score_file).appendChild(svgDom);
-        });
+          const outer = svgDom;
+          const inner = outer.querySelector("svg.definition-scale");
+          // Move children out
+          while (inner.firstChild) {
+            outer.appendChild(inner.firstChild);
+          }
+          // Copy important attrs
+          if (inner.hasAttribute("viewBox")) {
+            outer.setAttribute("viewBox", inner.getAttribute("viewBox"));
+          }
+
+          // Remove nested svg
+          inner.remove();
+
+          // Remove fixed dimensions
+          outer.removeAttribute("width");
+          outer.removeAttribute("height");
+          // outer.appendChild(svgDom);
+          // svgDom.removeAttribute("width");
+          // svgDom.removeAttribute("height");
+          // const g = svgDom.querySelector(".page-margin");
+          // const b = g.getBBox();
+
+          // svgDom.setAttribute(
+          //   "viewBox",
+          //   `${b.x} ${b.y} ${b.width} ${b.height}`
+          // );
+          // const tight = svgDom.getBBox();
+          console.log(score_file, svgDom.getAttribute('width'), svgDom.getBBox())
+          // const bbox = svg.getBBox();
+          // svgDom.setAttribute(
+          //   "viewBox",
+          //   `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`
+          // );
+          // svgDom.setAttribute('width',tight.width);
+
+        }));
     })
 
+    Promise.all(allPromises).then(() => {
+      addNodes(backgroundSvg)
+    });
 
 
     function xmlPitch2Midi(noteXml) {
@@ -228,7 +330,7 @@
       // milliseconds per 16th note
       const msp16 = 1000 * 60 / (4 * bpm)
       const isSwing = (score_xml[themeId].querySelector("sound").getAttribute('swing')) ? true : false;
-      console.log(isSwing)
+
       let eigthBeat = 0;
 
       for (let n = 0; n < noteData.length; n++) {
@@ -265,7 +367,7 @@
       }
       setTimeout(() => {
         score_svg[themeId].forEach(note => {
-          note.style.fill = "#B1FCCF";
+          note.style.fill = mainColour;
         })
       }, eventTime + 500)
     }
@@ -281,61 +383,10 @@
       }[noteType]
     }
 
-    const mainsvg = document.getElementById("graph");
-
-    function drawNode(node) {
-      const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
-
-      const circle = document.createElementNS(svg.namespaceURI, "circle");
-      circle.setAttribute("cx", node.x);
-      circle.setAttribute("cy", node.y);
-      circle.setAttribute("r", 40);
-      circle.setAttribute("fill", "#7fffd4");
-
-      // hover detection
-      circle.addEventListener("mouseenter", () => {
-        circle.setAttribute("stroke", "black");
-        circle.setAttribute("stroke-width", "3");
-      });
-
-      circle.addEventListener("mouseleave", () => {
-        circle.removeAttribute("stroke");
-      });
-
-      const text = document.createElementNS(svg.namespaceURI, "text");
-      text.setAttribute("x", node.x);
-      text.setAttribute("y", node.y + 5);
-      text.setAttribute("text-anchor", "middle");
-      text.textContent = node.label;
-
-      g.appendChild(circle);
-      g.appendChild(text);
-      mainsvg.appendChild(g);
-    }
-
-    function drawEdge(edge) {
-      const from = nodes.find(n => n.id === edge.from);
-      const to = nodes.find(n => n.id === edge.to);
-
-      const line = document.createElementNS(svg.namespaceURI, "line");
-      line.setAttribute("x1", from.x);
-      line.setAttribute("y1", from.y);
-      line.setAttribute("x2", to.x);
-      line.setAttribute("y2", to.y);
-      line.setAttribute("stroke", "black");
-      line.setAttribute("stroke-width", "2");
-      line.setAttribute("marker-end", "url(#arrow)");
-
-      mainsvg.appendChild(line);
-    }
-
-    // nodes.forEach(drawNode);
-    // edges.forEach(drawEdge);
-
     function xmlPitch2Transpose(noteXml) {
       const step = noteXml.querySelector('step').textContent;
       const octave = Number(noteXml.querySelector('octave').textContent);
-      let transpose = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11, }[step] + ((octave-4) * 12);      
+      let transpose = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11, }[step] + ((octave - 4) * 12);
       let acc = noteXml.querySelector('accidental')
       if (acc) { // check no parentheses
         if (acc.textContent === 'flat')
@@ -359,6 +410,170 @@
       pianoKey.rate(semitonesToRate(transpose)); // playback speed + pitch
       pianoKey.play();
     }
+
+    // Drawing Nodes
+
+
+    function drawNode(node, backgroundSvg) {
+      const font_size = 22.5;
+      const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+      const circle = document.createElementNS(backgroundSvg.namespaceURI, "circle");
+      circle.setAttribute("cx", node.x);
+      circle.setAttribute("cy", node.y);
+      circle.setAttribute("r", 70);
+      circle.setAttribute("fill", mainColour);
+      circle.setAttribute("class", node.id);
+
+      // hover detection
+      circle.addEventListener("mouseenter", () => {
+        circle.setAttribute("fill", "orange");
+        backgroundSvg.querySelectorAll(`.${node.id}_line`).forEach((line) => {
+          line.setAttribute('stroke', 'orange')
+        })
+      });
+
+      circle.addEventListener("mouseleave", () => {
+        circle.setAttribute("fill", mainColour);
+        backgroundSvg.querySelectorAll(`.${node.id}_line`).forEach((line) => {
+          line.setAttribute('stroke', mainColour)
+        })
+      });
+
+      g.appendChild(circle);
+
+      if (node.text.includes("\n")) {
+        const lines = node.text.split("\n")
+
+        const count = lines.length;
+        if (count === 2) {
+          lines.forEach((line, i) => {
+            const text = document.createElementNS(backgroundSvg.namespaceURI, "text");
+            const offset = -5 + (i * font_size * 1.4);
+            text.setAttribute("transform", `translate(0, ${offset}) scale(0.56, 1)`);
+            text.setAttribute("x", node.x / 0.56);
+            text.setAttribute("y", node.y);
+            text.setAttribute("text-anchor", "middle");
+            text.setAttribute("class", ".node-text");
+            text.setAttribute("font-size", `${font_size}pt`);
+            text.setAttribute("fill", "#000");
+            text.textContent = line;
+            g.appendChild(text);
+          })
+        }
+        else {
+          lines.forEach((line, i) => {
+            const text = document.createElementNS(backgroundSvg.namespaceURI, "text");
+            const offset = 10 + font_size * 1.4 * (i - 1);
+            text.setAttribute("transform", `translate(0, ${offset}) scale(0.56, 1)`);
+            text.setAttribute("x", node.x / 0.56);
+            text.setAttribute("y", node.y);
+            text.setAttribute("text-anchor", "middle");
+            text.setAttribute("class", ".node-text");
+            text.setAttribute("font-size", `${font_size}pt`);
+            text.setAttribute("fill", "#000");
+            text.textContent = line;
+            g.appendChild(text);
+          })
+        }
+      }
+      else {
+        const text = document.createElementNS(backgroundSvg.namespaceURI, "text");
+
+        text.setAttribute("transform", "translate(0, 5) scale(0.56, 1)");
+        text.setAttribute("x", node.x / 0.56);
+        text.setAttribute("y", node.y + 5);
+        text.setAttribute("text-anchor", "middle");
+        text.setAttribute("class", ".node-text");
+        text.setAttribute("font-size", `${font_size}pt`);
+        text.setAttribute("fill", "#000");
+        text.textContent = node.text;
+        g.appendChild(text);
+      }
+      // g.appendChild(scaleText);
+      backgroundSvg.appendChild(g);
+    }
+
+    function drawArrow(node, backgroundSvg) {
+      node.connections.forEach((scoreId, i) => {
+        const score = positions[scoreId];
+        const line = document.createElementNS(backgroundSvg.namespaceURI, "line");
+        const el = document.getElementById(scoreId);
+        const scaleWidth = 1.1;
+        const scaleHeight = 0.9;
+        const end = getArrowEndPoint(node.x, node.y, score.x, score.y, el.offsetWidth * scaleWidth, el.offsetHeight * scaleHeight);
+
+        line.setAttribute("x1", node.x);
+        line.setAttribute("y1", node.y);
+        line.setAttribute("x2", end.x);
+        line.setAttribute("y2", end.y);
+        line.setAttribute("stroke", mainColour);
+        line.setAttribute("stroke-width", "5");
+        line.setAttribute("marker-end", "url(#arrowhead)");
+        line.setAttribute("class", `${node.id}_line`);
+
+        line.setAttribute("line-id", node.id + "_" + `${i}`);
+        line.addEventListener("mouseenter", () => {
+          line.setAttribute("stroke", "orange");
+          backgroundSvg.querySelector(`.${node.id}`).setAttribute("fill", "orange")
+          // console.log(line.getAttribute('parent-id'), line.getAttribute('line-id'));
+          // set parent orange
+        });
+
+        line.addEventListener("mouseleave", () => {
+          line.setAttribute("stroke", mainColour);
+          backgroundSvg.querySelector(`.${node.id}`).setAttribute("fill", mainColour)
+        });
+
+        backgroundSvg.appendChild(line);
+      })
+    }
+
+    function addNodes(backgroundSvg) {
+      console.log("addNodes()")
+      nodes.forEach(node => drawArrow(node, backgroundSvg))
+      nodes.forEach(node => drawNode(node, backgroundSvg))
+    }
+
+
+    function getArrowEndPoint(
+      cx, cy,           // source circle center
+      tx, ty,           // target center
+      width, height,    // target size
+      margin = 0
+    ) {
+      // Direction vector
+      const dx = tx - cx;
+      const dy = ty - cy;
+
+      // Length
+      const len = Math.hypot(dx, dy);
+
+      // Unit vector
+      const ux = dx / len;
+      const uy = dy / len;
+
+      // Half dimensions
+      // 450/688 of width
+      const hw = width * 0.5 * ((dx < 0) ? 0.9 : 1.0);
+      const hh = height * 0.5 * ((dy < 0) ? 0.65 : 1.0);
+
+      // Distance to rectangle edge along ray
+      const scaleX = hw / Math.abs(ux);
+      const scaleY = hh / Math.abs(uy);
+
+      // Closest edge intersection
+      const edgeDist = Math.min(scaleX, scaleY);
+
+      // Pull back by edge + margin
+      const dist = edgeDist + margin;
+
+      return {
+        x: tx - ux * dist,
+        y: ty - uy * dist
+      };
+    }
+
   </script>
 </body>
 
