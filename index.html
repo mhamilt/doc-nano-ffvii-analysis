@@ -33,7 +33,7 @@
     }
 
     .score-container svg {
-      height: 8rem;
+      height: 6.5rem;
       width: auto;
       fill: #B1FCCF;
       stroke: #B1FCCF;
@@ -64,7 +64,7 @@
 
     import { nodes } from './metadata.js';
     let pianoKey;
-    let sounds = new Array(nodes.length);
+    let sounds = {};
 
     window.preload = function () {
       soundFormats("wav", "mp3");
@@ -72,8 +72,8 @@
       nodes.forEach((n, i) => {
         n.connections.forEach((c, j) => {
           const soundFilename = n.id + "_" + c;
-          console.log(soundFilename);
-          // sounds[i] = loadSound(`/assets/${soundfileName}.mp3`);
+          // console.log(soundFilename);
+          // sounds[soundFilename] = loadSound(`/assets/${soundFilename}.mp3`);
         })
       })
       console.log("preload");
@@ -510,6 +510,7 @@
 
         line.addEventListener("mousedown", () => {
           // play
+          sounds[line_id].play()
           console.log(`Play Sound: ${line_id}`)
           line.setAttribute("stroke", "red");
           backgroundSvg.querySelector(`.${node.id}`).setAttribute("fill", "red")
@@ -545,8 +546,8 @@
 
       // Half dimensions
       // 450/688 of width
-      const hw = width * 0.5 * ((dx < 0) ? 1.15 : 1.3);
-      const hh = height * 0.5 * ((dy < 0) ? 0.85 : 1.2);
+      const hw = width * 0.5 * ((dx < 0) ? 1.15 : 1.4);
+      const hh = height * 0.5 * ((dy < 0) ? 0.85 : 1.5);
 
       // Distance to rectangle edge along ray
       const scaleX = hw / Math.abs(ux);
@@ -562,6 +563,14 @@
         x: tx - ux * dist,
         y: ty - uy * dist
       };
+    }
+
+    function stopAllSounds() {
+
+      for (const [key, sound] of Object.entries(sounds)) {
+        sound.stop();
+      }
+
     }
 
   </script>
