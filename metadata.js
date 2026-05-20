@@ -115,7 +115,7 @@ export const nodes = [
     id: 'shinra-company'
   },
   {
-    connections: ['fighting_3','fighting_4'],
+    connections: ['fighting_3'],
     text: 'Infiltrating\nShinra\nTower',
     arrows_from: 1,
     x: 3066,
@@ -391,7 +391,7 @@ export const nodes = [
     arrows_from: 1,
     x: 2500,
     y: 1806,
-    id: 'its-hard-to-stand-on-two-feet,-isnt-it'
+    id: 'its-hard-to-stand-on-two-feet-isnt-it'
   },
   {
     connections: ['oppressed_people_2'],
