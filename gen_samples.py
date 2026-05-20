@@ -35,4 +35,4 @@ with open(CSV_FILE, newline="") as f:
         ]
 
         print("Running:", " ".join(cmd))
-        # subprocess.run(cmd, check=True)
+        subprocess.run(cmd, check=True)

@@ -72,8 +72,8 @@
       nodes.forEach((n, i) => {
         n.connections.forEach((c, j) => {
           const soundFilename = n.id + "_" + c;
-          // console.log(soundFilename);
-          // sounds[soundFilename] = loadSound(`/assets/${soundFilename}.mp3`);
+          console.log(`${soundFilename}.mp3`);
+          sounds[soundFilename] = loadSound(`/audio/${soundFilename}.mp3`);
         })
       })
       console.log("preload");
@@ -510,8 +510,9 @@
 
         line.addEventListener("mousedown", () => {
           // play
-          sounds[line_id].play()
           console.log(`Play Sound: ${line_id}`)
+          console.log(sounds[line_id]);
+          sounds[line_id].play()
           line.setAttribute("stroke", "red");
           backgroundSvg.querySelector(`.${node.id}`).setAttribute("fill", "red")
         });
