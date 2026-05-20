@@ -397,6 +397,30 @@
       pianoKey.play();
     }
 
+    async function playQueue(soundIdArray) {
+      stopAllSounds()
+      if (soundIdArray.length === 1) {
+        sounds[soundIdArray].play()
+      }
+      else {
+        for (const s of soundIdArray) {
+          await playOnce(s);
+        }
+        console.log("queue finished");
+      }
+    }
+
+    function playOnce(soundId) {
+      return new Promise((resolve) => {
+        sounds[soundId].stop();
+
+        sounds[soundId].onended(() => {
+          resolve();
+        });
+
+        sounds[soundId].play();
+      });
+    }
     // Drawing Nodes
     function drawNode(node, backgroundSvg) {
       const font_size = 22.5;
@@ -422,6 +446,17 @@
         backgroundSvg.querySelectorAll(`.${node.id}_line`).forEach((line) => {
           line.setAttribute('stroke', mainColour)
         })
+      });
+
+      circle.addEventListener("mousedown", () => {
+        circle.setAttribute("fill", "red");
+        backgroundSvg.querySelectorAll(`.${node.id}_line`).forEach((line) => {
+          line.setAttribute('stroke', "red")
+        })
+
+        const node_lines = backgroundSvg.querySelectorAll(`.${node.id}_line`);
+        const track_ids = Array.from(node_lines).map(line => `${line.getAttribute("line-id")}`)        
+        playQueue(track_ids);
       });
 
       g.appendChild(circle);
@@ -477,6 +512,8 @@
       // g.appendChild(scaleText);
       backgroundSvg.appendChild(g);
     }
+
+
 
     function drawArrow(node, backgroundSvg) {
       node.connections.forEach((scoreId, i) => {
@@ -574,6 +611,10 @@
       }
 
     }
+
+
+
+
 
   </script>
 </body>
