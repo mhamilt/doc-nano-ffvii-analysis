@@ -72,8 +72,8 @@
       nodes.forEach((n, i) => {
         n.connections.forEach((c, j) => {
           const soundFilename = n.id + "_" + c;
-          console.log(`${soundFilename}.mp3`);
-          sounds[soundFilename] = loadSound(`/audio/${soundFilename}.mp3`);
+          // console.log(`${soundFilename}.mp3`);
+          sounds[soundFilename] = loadSound(`./audio/${soundFilename}.mp3`);
         })
       })
       console.log("preload");
