@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.58 103.68">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #9fc;
+        stroke-miterlimit: 10;
+        stroke-width: 4.68px;
+      }
+
+      .cls-2 {
+        font-family: PlayfairDisplay-Regular, 'Playfair Display';
+        font-size: 16.13px;
+        font-variation-settings: 'wght' 400;
+      }
+
+      .cls-3 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-4 {
+        letter-spacing: 0em;
+      }
+
+      .cls-5 {
+        letter-spacing: 0em;
+      }
+
+      .cls-6 {
+        fill: #9fc;
+      }
+    </style>
+  </defs>
+  <g>
+    <path class="cls-6" d="M35.79,71.08C16.33,71.08.5,55.25.5,35.79S16.33.5,35.79.5s35.29,15.83,35.29,35.29-15.83,35.29-35.29,35.29Z"/>
+    <path class="cls-6" d="M35.79,1c19.18,0,34.79,15.61,34.79,34.79s-15.61,34.79-34.79,34.79S1,54.97,1,35.79,16.61,1,35.79,1M35.79,0C16.02,0,0,16.02,0,35.79s16.02,35.79,35.79,35.79,35.79-16.02,35.79-35.79S55.56,0,35.79,0h0Z"/>
+  </g>
+  <g>
+    <g>
+      <line class="cls-1" x1="35.79" y1="35.79" x2="12.27" y2="95.87"/>
+      <polygon class="cls-6" points="7.46 92.15 9.21 103.68 18.33 96.4 7.46 92.15"/>
+    </g>
+    <line class="cls-6" x1="35.79" y1="35.79" x2="9.21" y2="103.68"/>
+  </g>
+  <text class="cls-2" transform="translate(10.53 40.73) scale(.56 1)"><tspan class="cls-5" x="0" y="0">M</tspan><tspan x="13.97" y="0">ain</tspan><tspan class="cls-3" x="36.35" y="0"> </tspan><tspan class="cls-4" x="39.98" y="0">T</tspan><tspan x="49.9" y="0">heme</tspan></text>
+</svg>
