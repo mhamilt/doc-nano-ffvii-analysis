@@ -16,7 +16,7 @@ track,ss,to,name
 41,00:00:00.000,00:00:04.000,mark-of-the-traitor_barret_1
 30,00:00:04.800,00:00:06.900,waltz-de-chocobo_chocobo_1
 32,00:00:06.800,00:00:08.000,cinco-de-chocobo_chocobo_1
-29,00:00:38.000,00:00:42.000,fiddle-de-chocobo_chocobo_1
+58,00:00:03.000,00:00:04.500,fiddle-de-chocobo_chocobo_1
 31,00:00:12.900,00:00:15.000,electric-de-chocobo_chocobo_1
 49,00:00:07.500,00:00:14.000,descendant-of-shinobi_yuffie_1
 56,00:00:20.000,00:00:26.000,stolen-materia_yuffie_1
@@ -25,7 +25,7 @@ track,ss,to,name
 08,00:00:06.000,00:00:09.000,hurry_bombing_mission_1
 12,00:00:00.000,00:00:04.000,fanfare_fanfare_1
 59,00:00:00.000,00:00:03.700,a-great-success_fanfare_1
-59,00:00:00.000,00:00:03.700,tango-of-tears_fanfare_1
+60,00:00:00.000,00:00:03.700,tango-of-tears_fanfare_1
 16,00:00:16.500,00:00:21.700,oppressed-people_oppressed_people_1
 36,00:00:01.700,00:00:06.000,its-hard-to-stand-on-two-feet-isnt-it_oppressed_people_1
 36,00:00:12.000,00:00:15.800,its-hard-to-stand-on-two-feet-isnt-it_oppressed_people_2
@@ -56,9 +56,9 @@ track,ss,to,name
 21,00:00:01.700,00:00:03.500,those-who-fight-further_fighting_2
 21,00:01:14.000,00:01:20.100,those-who-fight-further_fighting_3
 09,00:00:02.500,00:00:04.100,lurking-in-the-darkness_fighting_2
-14,00:00:17.000,00:00:20.000,turks-theme_fighting_2
+14,00:00:16.000,00:00:20.000,turks-theme_fighting_2
 10,00:00:15.600,00:00:22.000,shinra-company_fighting_3
-10,00:01:21.000,00:01:24.400,shinra-company_fighting_4
+10,00:01:21.000,00:01:25.400,shinra-company_fighting_4
 81,00:00:00.000,00:00:00.100,the-mako-cannon-is-fired_fighting_3
 20,00:00:00.000,00:00:09.000,infiltrating-shinra-tower_fighting_3
 04,00:00:49.000,00:00:55.100,mako-reactor_fighting_4

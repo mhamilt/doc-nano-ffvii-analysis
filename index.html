@@ -510,8 +510,9 @@
 
         line.addEventListener("mousedown", () => {
           // play
-          console.log(`Play Sound: ${line_id}`)
-          console.log(sounds[line_id]);
+          // console.log(`Play Sound: ${line_id}`)
+          // console.log(sounds[line_id]);
+          stopAllSounds()
           sounds[line_id].play()
           line.setAttribute("stroke", "red");
           backgroundSvg.querySelector(`.${node.id}`).setAttribute("fill", "red")
