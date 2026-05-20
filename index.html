@@ -68,7 +68,7 @@
 
     window.preload = function () {
       soundFormats("wav", "mp3");
-      pianoKey = loadSound("/assets/ffvii-key.wav");
+      pianoKey = loadSound("./assets/ffvii-key.wav");
       nodes.forEach((n, i) => {
         n.connections.forEach((c, j) => {
           const soundFilename = n.id + "_" + c;
